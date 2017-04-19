@@ -1,0 +1,35 @@
+/* div {
+     display: inline;
+}
+*/
+
+div::after {
+    content: "";
+    clear: both;
+    display: table;
+    /*overflow: auto;*/
+}
+
+div.container {
+    /* width: 100%;*/
+    border: 1px solid gray;
+}
+
+div.section {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 100%;
+}
+
+div.message {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    padding: 5px;
+    border: 3px solid #73AD21;
+    background-color: #cae8ca;
+    z-index: 999;
+}
+
