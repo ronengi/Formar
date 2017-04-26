@@ -3,23 +3,30 @@
 }
 */
 
+/*
 div::after {
     content: "";
     clear: both;
     display: table;
     /*overflow: auto;*/
+/*    
 }
+*/
 
 div.container {
-    /* width: 100%;*/
     border: 1px solid gray;
+    border-radius: 4px;
+    padding: 8px;
 }
 
 div.section {
     position: absolute;
     top: 40px;
     left: 40px;
-    width: 100%;
+
+    background-color: lightgreen;
+    white-space: nowrap;
+    /* width: 400px; */
 }
 
 div.message {
