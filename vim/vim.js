@@ -45,7 +45,7 @@ window.onload = function() {
     /*
     // dragend
     document.addEventListener("dragend", function(event) {
-       console.log("dragend"); 
+       console.log("dragend");
     });
     */
 
