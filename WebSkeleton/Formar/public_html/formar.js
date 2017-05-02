@@ -1,8 +1,15 @@
-window.onload = function() {
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+window.onload = function () {
 
 
     // dragstart
-    document.addEventListener("dragstart", function(event) {
+    document.addEventListener("dragstart", function (event) {
         var dt = event.dataTransfer;
 
         var me = event.target;
@@ -11,9 +18,16 @@ window.onload = function() {
         var myLeft = parseInt(myStyle.getPropertyValue("left"), 10) - event.clientX;
         var myTop = parseInt(myStyle.getPropertyValue("top"), 10) - event.clientY;
 
+        // console.log(me.classList);
+        if (me.classList.contains("resizeHandle")) {
+            console.log("resizeHandle dragged");
+
+            console.log(me.parentNode);
+        }
+
         me.id = "the_dragged_thingy";
         me.style.backgroundColor = "lightblue";
-        me.style.opacity="0.3";
+        me.style.opacity = "0.3";
         me.style.border = "1px dashed blue";
 
         dt.setData("text/plain", me.id + "," + myLeft + "," + myTop);
@@ -21,7 +35,7 @@ window.onload = function() {
 
 
     // drag
-    document.addEventListener("drag", function(event) {
+    document.addEventListener("drag", function (event) {
         event.preventDefault();
         var dt = event.target;
         dt.effectAllowed = "all";
@@ -30,7 +44,7 @@ window.onload = function() {
 
 
     // dragover
-    document.addEventListener("dragover", function(event) {
+    document.addEventListener("dragover", function (event) {
         event.preventDefault();
 
         var dt = event.dataTransfer;
@@ -43,15 +57,15 @@ window.onload = function() {
 
 
     /*
-    // dragend
-    document.addEventListener("dragend", function(event) {
-       console.log("dragend");
-    });
-    */
+     // dragend
+     document.addEventListener("dragend", function(event) {
+     console.log("dragend");
+     });
+     */
 
 
     // drop
-    document.addEventListener("drop", function(event) {
+    document.addEventListener("drop", function (event) {
         event.preventDefault();
 
         var me = document.getElementById("the_dragged_thingy");
@@ -76,5 +90,5 @@ window.onload = function() {
 
     document.getElementById("alerter").innerHTML = "ready";
 
-}
+};
 
