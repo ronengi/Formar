@@ -19,15 +19,70 @@ div.container {
     padding: 8px;
 }
 
-div.section {
+div.infotom {
     position: absolute;
-    top: 40px;
-    left: 40px;
 
     background-color: lightgreen;
     white-space: nowrap;
-    /* width: 400px; */
 }
+
+.lrtl {
+    direction:rtl;
+}
+
+
+/* New editable InfoTom */
+div.addnewone {
+    background-color: lightblue;
+    transition: background-color 1s ease-in-out;
+    text-align: center;
+
+    direction: rtl;
+
+    top: 30px;
+    left: 540px;
+
+    width:300px;
+    height:90px;
+}
+div.addnewone:hover {
+    background-color: green;
+}
+
+.addnewone input[type=text] {
+    border: none;
+    border-top: 2px solid lightblue;
+    border-bottom: 2px solid lightblue;
+    background-color: lightblue;
+    color: black;
+    width: 95%;
+    margin: 5px auto;
+    transition: background-color 0.4s ease-in-out;
+}
+.addnewone input[type=text]:focus {
+    background-color: lightgreen;
+    border-top: 2px solid red;
+    border-bottom: 2px solid red;
+}
+
+.addnewone textarea {
+    resize: none;
+    border: none;
+    border-top: 2px solid lightblue;
+    border-bottom: 2px solid lightblue;
+    background-color: lightblue;
+    color: black;
+    width: 95%;
+    margin: 5px auto;
+    transition: background-color 0.4s ease-in-out;
+}
+.addnewone textarea:focus {
+    background-color: lightgreen;
+    border-top: 2px solid red;
+    border-bottom: 2px solid red;
+}
+
+
 
 div.message {
     position: fixed;
