@@ -1,43 +1,20 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : May 2, 2017, 11:02:03 PM
-    Author     : stimpy
-*/
 
-/* div {
-     display: inline;
-}
-*/
-
-/*
-div::after {
-    content: "";
-    clear: both;
-    display: table;
-    /*overflow: auto;*/
-/*    
-}
-*/
-
-div.container {
+div.InfoTom {
+    position: absolute;
     border: 1px solid gray;
     border-radius: 4px;
     padding: 8px;
-}
-
-div.infotom {
-    position: absolute;
-
     background-color: lightgreen;
     white-space: nowrap;
 }
 
-.lrtl {
-    direction:rtl;
+
+div.resizeHandle {
+    position: absolute;
+    border: 1px solid blue;
+    border-radius: 3px;
+    padding: 1px 3px;
+    background-color: lime;
 }
 
 
@@ -94,7 +71,7 @@ div.addnewone:hover {
 
 
 
-div.message {
+div.alerter {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -103,4 +80,9 @@ div.message {
     border: 3px solid #73AD21;
     background-color: #cae8ca;
     z-index: 999;
+}
+
+
+.lang_rtl {
+    direction:rtl;
 }
