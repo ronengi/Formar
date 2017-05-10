@@ -9,7 +9,7 @@ function drag_and_drop_init() {
         var leftover = document.getElementById("the_currently_dragged_thingy");
         if (leftover !== null)
             leftover.id = "";
-        
+
         event.target.id = "the_currently_dragged_thingy";
         if (event.target.classList.contains("resizeHandle"))
             resizeHandle_dragstart(event);
