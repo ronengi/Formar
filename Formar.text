@@ -1,0 +1,41 @@
+
+bond types:
+    information to information
+    information to key_word
+    information to display
+
+
+information types:
+
+    textual information:
+        title
+        sentence
+        paragraph
+        example
+        link
+
+    key_word
+
+    tabled information:
+        table
+        table row
+        table column
+
+    list information:
+        list
+        list-item
+
+    visual information:
+        image, icon
+        graph
+        graph_datum
+
+    ? separator
+
+    actions:
+        menu
+        menu-item
+
+
+display types:
+    
