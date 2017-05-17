@@ -1,0 +1,11 @@
+body {
+    position: relative;
+    min-height: 100%;
+    top: 0px;
+    margin: 0;
+}
+
+
+.lang_rtl {
+    direction:rtl;
+}

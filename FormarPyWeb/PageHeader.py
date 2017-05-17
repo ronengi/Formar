@@ -32,6 +32,7 @@ class PageHeader:
         for style in self._styles:
             header_lines.append('{0}<link rel="stylesheet" href="{1}">'.format(' ' * 8, style))
         header_lines.append('{0}</head>'.format(' ' * 4))
+        header_lines.append('{0}<body>'.format(' ' * 4))
         return "\n".join(header_lines)
 
 

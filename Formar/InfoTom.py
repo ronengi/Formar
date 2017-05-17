@@ -1,29 +1,19 @@
 #!/usr/bin/python
 
 class InfoTom:
-    """Short for Information Atom. Represents a basic unit of information.
+    """Information Atom. Represents a basic unit of information.
+    """
 
-    
-    def __init__(self, parent=None, title=None, contents=None, examples=None, level=0, key_words=None, display=None):
-        self.parent = parent
-
-
-
-
+    def __init__(self, parent_bond=None, contents=None, level=0):
+        self._parent_bond = parent_bond
+        self._contents = contents
+        self._level = level
 
 
-    def __str__(self):
+    def __repr__(self):
+        if self._contents is None:
+            return ''
+        return self._contents
 
-
-
-
-
-
-
-
-
-
-
-
-    def valid(self):
-    
+    def is_valid(self):
+        pass
