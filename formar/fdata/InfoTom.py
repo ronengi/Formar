@@ -90,7 +90,7 @@ class InfoTom:
     def decode(j_str):
         j_dict = json.loads(j_str)
         if j_dict['Class'] != 'InfoTom':
-            # todo: raise an exceprion
+            # todo: raise an exception
             return None
         # todo: take care of parent_bond decoding here
         it = InfoTom(contents=j_dict['contents']
