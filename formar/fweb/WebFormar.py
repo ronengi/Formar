@@ -38,9 +38,11 @@ print(header)
 
 print("<body>")
 
-print("First try: dynamic display of InfoTom")
+print('<br> <div style="max-width: 500px; margin: auto; padding: 15px;'
+      + 'text-align: center; border: 2px solid red;">'
+      + 'Information Nodes</div> <br>')
 
-print("<br>")
+page1 = []
 
 it = InfoTom.InfoTom(contents='Horses', lang_rtl=True, left=300, top=450)
 wit = WebInfoTom.WebInfoTom(info=it)
@@ -48,6 +50,6 @@ print(wit)
 
 print("<br>")
 
-footer = PageFooter.PageFooter("Goodbye Now")
+footer = PageFooter.PageFooter()
 print(footer)
 
