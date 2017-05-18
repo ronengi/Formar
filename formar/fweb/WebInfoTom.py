@@ -20,6 +20,8 @@
 from formar.fdata import InfoTom
 
 
+# todo: implement a separate <div> creator
+# todo: after that implement a general <tag> creator
 class WebInfoTom:
     """Draws InfoTom on a web page.
     """
@@ -45,6 +47,11 @@ class WebInfoTom:
 
         if hasattr(info, '_top'):
             html_div['styles'].append('top: {0}px;'.format(str(info._top)))
+
+        # todo: these also need to be attributes of info
+        html_div['styles'].append('width: {0}px;'.format('350')) # str(info._width)))
+        html_div['styles'].append('height: {0}px;'.format('20')) # str(info._height)))
+
 
         if isinstance(info, InfoTom.InfoTom):
             html_div['classes'].append('InfoTom')
