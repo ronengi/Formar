@@ -6,4 +6,5 @@ class Display:
     """
 
     def __init__(self, text_direction="ltr", language="en"):
+        pass
 
