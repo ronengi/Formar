@@ -16,11 +16,21 @@
    limitations under the License.
 """
 
+"""Main Application Controller.
+
+      Provides these functions:
+        The user's access point to the information.
+        Imports all modules.
+        Simulates the correct flow of the application,
+"""
+
+# todo: gradually transfer functionality to specialized modules
 
 from formar.fweb import PageHeader
 from formar.fweb import PageFooter
 from formar.fweb import WebInfoTom
 from formar.fdata import InfoTom
+from formar.fdatabase.ffiles import PageReader
 
 header = PageHeader.PageHeader()
 header._title = 'Formar Objects Skeleton'
@@ -42,11 +52,20 @@ print('<br> <div style="max-width: 500px; margin: auto; padding: 15px;'
       + 'text-align: center; border: 2px solid red;">'
       + 'Information Nodes</div> <br>')
 
-page1 = []
+# todo: add InfoTom width & height
 
-it = InfoTom.InfoTom(contents='Horses', lang_rtl=True, left=300, top=450)
-wit = WebInfoTom.WebInfoTom(info=it)
-print(wit)
+# todo: deal with situations with / without exceptions
+# todo:   - page1_info empty (None)
+# todo:   - invalid InfoTom data
+# todo:   - InfoTom None
+
+# todo: next stage is to save json correctly: page containing InfoToms,
+# todo:  instead of separate InfoToms
+# page1 = PageReader.PageReader('/archive/devel/stimpy/Formar/formar/fdatabase/ffiles/page1')
+page1 = PageReader.PageReader('/archive/devel/stimpy/Formar/formar/fdatabase/ffiles/page1')
+page1_info = page1.get_page_info()
+for it in page1_info:
+    print(WebInfoTom.WebInfoTom(info=it))
 
 print("<br>")
 
