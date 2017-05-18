@@ -25,16 +25,7 @@ print("First try: dynamic display of InfoTom")
 
 print("<br>")
 
-it = InfoTom.InfoTom(
-    contents='<div class="InfoTom lang_rtl"'
-            + 'style="left: 300px; top: 450px;" draggable="true">'
-            + 'Horses'
-            + '<div class="resizeHandle" style="right: 1px; bottom: 1px;"'
-            + 'draggable="true"> &Congruent; </div>'
-            + '</div>')
-
-print(it)
-
+it = InfoTom.InfoTom(contents='Horses', lang_rtl=True, left=300, top=450)
 wit = WebInfoTom.WebInfoTom(info=it)
 print(wit)
 
