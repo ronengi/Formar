@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+
 class InfoTom:
     """Information Atom. Represents a basic unit of information.
     """
@@ -9,8 +10,7 @@ class InfoTom:
         self._contents = contents
         self._level = level
 
-
-    def __repr__(self):
+    def __str__(self):
         if self._contents is None:
             return ''
         return self._contents
