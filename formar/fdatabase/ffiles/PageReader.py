@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import json
 from formar.fdata import InfoTom
 
 
@@ -22,8 +23,12 @@ class PageReader:
         else:
             page1 = []
             for line in f_reader:
-                it = InfoTom.InfoTom.decode(line)
-                page1.append(it)
+                try:
+                    page1.append(
+                        json.loads(
+                            line, object_hook=PageReader.as_infotom))
+                except json.JSONDecodeError as err:
+                    print(err.args)
             return page1
 
         finally:
@@ -33,3 +38,8 @@ class PageReader:
                 print(err)
                 print(err.args)
 
+    @staticmethod
+    def as_infotom(j_dict):
+        if '__InfoTom__' in j_dict:
+            return InfoTom.InfoTom.decode(j_dict['__InfoTom__'])
+        return j_dict

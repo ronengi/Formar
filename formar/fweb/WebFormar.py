@@ -65,7 +65,7 @@ print('<br> <div style="max-width: 500px; margin: auto; padding: 15px;'
 page1 = PageReader.PageReader('/archive/devel/stimpy/Formar/formar/fdatabase/ffiles/page1')
 page1_info = page1.get_page_info()
 for it in page1_info:
-    print(WebInfoTom.WebInfoTom(info=it))
+    print(WebInfoTom.WebInfoTom(infotom=it))
 
 print("<br>")
 

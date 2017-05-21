@@ -26,37 +26,34 @@ class WebInfoTom:
     """Draws InfoTom on a web page.
     """
 
-    def __init__(self, info=None):
-        self._info = info
+    def __init__(self, infotom=None):
+        self.__infotom = infotom
 
     def __str__(self):
-        info = self._info
-        if info is None:
+        it = self.__infotom
+        if it is None:
             return ''
+
+        if not isinstance(it, InfoTom.InfoTom):
+            raise TypeError('InfoTom expected')
 
         html_div = {'classes': []
                     , 'styles': []
                     , 'properties': []
                     , 'contents': []}
 
-        if hasattr(info, '_lang_rtl') and info._lang_rtl:
+        if it.get_lang_rtl():
             html_div['classes'].append('lang_rtl')
 
-        if hasattr(info, '_left'):
-            html_div['styles'].append('left: {0}px;'.format(str(info._left)))
+        html_div['styles'].append('left: {0}px;'.format(str(it.get_left())))
+        html_div['styles'].append('top: {0}px;'.format(str(it.get_top())))
+        html_div['styles'].append('width: {0}px;'.format(str(it.get_width())))
+        html_div['styles'].append('height: {0}px;'.format(str(it.get_height())))
 
-        if hasattr(info, '_top'):
-            html_div['styles'].append('top: {0}px;'.format(str(info._top)))
-
-        # todo: these also need to be attributes of info
-        html_div['styles'].append('width: {0}px;'.format('350')) # str(info._width)))
-        html_div['styles'].append('height: {0}px;'.format('20')) # str(info._height)))
-
-
-        if isinstance(info, InfoTom.InfoTom):
+        if isinstance(it, InfoTom.InfoTom):
             html_div['classes'].append('InfoTom')
             html_div['properties'].append('draggable="true"')
-            html_div['contents'].append(str(info))
+            html_div['contents'].append(str(it))
             html_div['contents'].append(self.add_resize_handle())
 
         div = '<div class="{0}" style="{1}" {2}>{3}</div>'.format(

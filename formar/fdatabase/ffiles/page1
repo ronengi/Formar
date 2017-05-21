@@ -1,7 +1,7 @@
-{"Class": "InfoTom", "contents": "vim", "lang_rtl": false, "left": 70, "top": 80, "level": 0, "parent_bond": null}
-{"Class": "InfoTom", "contents": "Configuration", "lang_rtl": false, "left": 260, "top": 140, "level": 0, "parent_bond": null}
-{"Class": "InfoTom", "contents": "Files", "lang_rtl": false, "left": 440, "top": 200, "level": 0, "parent_bond": null}
-{"Class": "InfoTom", "contents": "~/.vimrc", "lang_rtl": false, "left": 620, "top": 270, "level": 0, "parent_bond": null}
-{"Class": "InfoTom", "contents": "/etc/vimrc", "lang_rtl": false, "left": 620, "top": 350, "level": 0, "parent_bond": null}
-{"Class": "InfoTom", "contents": "/var/abs/extra/vim/vimrc", "lang_rtl": false, "left": 620, "top": 430, "level": 0, "parent_bond": null}
-{"Class": "InfoTom", "contents": "/usr/share/vim/vim80/vimrc_example.vim", "lang_rtl": false, "left": 620, "top": 500, "level": 0, "parent_bond": null}
+{"__InfoTom__": {"contents": "vim", "lang_rtl": false, "left": 70, "top": 80, "width": 100, "height": 20, "level": 0, "parent_bond": null}}
+{"__InfoTom__": {"contents": "Configuration", "lang_rtl": false, "left": 260, "top": 140, "width": 200, "height": 20, "level": 0, "parent_bond": null}}
+{"__InfoTom__": { "contents": "Files", "lang_rtl": false, "left": 440, "top": 200, "width": 100, "height": 20, "level": 0, "parent_bond": null}}
+{"__InfoTom__": { "contents": "~/.vimrc", "lang_rtl": false, "left": 620, "top": 270, "width": 100, "height": 20, "level": 0, "parent_bond": null}}
+{"__InfoTom__": { "contents": "/etc/vimrc", "lang_rtl": false, "left": 620, "top": 350, "width": 100, "height": 20, "level": 0, "parent_bond": null}}
+{"__InfoTom__": { "contents": "/var/abs/extra/vim/vimrc", "lang_rtl": false, "left": 620, "top": 430, "width": 300, "height": 20, "level": 0, "parent_bond": null}}
+{"__InfoTom__": { "contents": "/usr/share/vim/vim80/vimrc_example.vim", "lang_rtl": false, "left": 620, "top": 500, "width": 350, "height": 20, "level": 0, "parent_bond": null}}
