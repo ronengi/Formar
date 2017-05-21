@@ -41,5 +41,5 @@ class PageReader:
     @staticmethod
     def as_infotom(j_dict):
         if '__InfoTom__' in j_dict:
-            return InfoTom.InfoTom.decode(j_dict['__InfoTom__'])
+            return InfoTom.InfoTom.decode(j_dict)
         return j_dict

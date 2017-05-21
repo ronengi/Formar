@@ -17,9 +17,6 @@
 """
 
 
-import json
-
-
 class InfoTom:
     """Information Atom. Represents a basic unit of information.
     """
@@ -42,6 +39,20 @@ class InfoTom:
         except (AttributeError, TypeError):
             # no such attribute or None
             return ''
+
+    def __eq__(self, other):
+        if not isinstance(other, InfoTom):
+            return False
+        if self.get_contents() == other.get_contents() \
+            and self.get_lang_rtl() == other.get_lang_rtl() \
+            and self.get_left() == other.get_left() \
+            and self.get_top() == other.get_top() \
+            and self.get_width() == other.get_width() \
+            and self.get_height() == other.get_height() \
+            and self.get_level() == other.get_level() \
+            and self.get_parent_bond() == other.get_parent_bond():
+            return True
+        return False
 
     # todo: __contents may be any kind of object
     def get_contents(self):
@@ -103,9 +114,8 @@ class InfoTom:
             return None
 
     def encode(self):
-        return json.dumps(dict(
-            Class='InfoTom'
-            , contents=self.get_contents()
+        return dict(__InfoTom__=dict(
+            contents=self.get_contents()
             , lang_rtl=self.get_lang_rtl()
             , left=self.get_left()
             , top=self.get_top()
@@ -114,22 +124,56 @@ class InfoTom:
             , level=self.get_level()
             , parent_bond=self.get_parent_bond()))
 
-    # @staticmethod
-    # def decode(j_str):
-    #     j_dict = json.loads(j_str)
     @staticmethod
     def decode(j_dict):
-        # if j_dict['Class'] != 'InfoTom':
-        # todo: raise an exception
-        #   return None
-        # todo: take care of parent_bond decoding here
-        it = InfoTom(contents=j_dict['contents']
-                     , lang_rtl=j_dict['lang_rtl']
-                     , left=j_dict['left']
-                     , top=j_dict['top']
-                     , width=j_dict['width']
-                     , height=j_dict['height']
-                     , level=j_dict['level']
-                     , parent_bond=j_dict['parent_bond'])
+
+        try:
+            j_dict_infotom = j_dict['__InfoTom__']
+        except KeyError:
+            return None
+
+        try:
+            it_contents = j_dict_infotom['contents']
+        except KeyError:
+            it_contents = None
+
+        try:
+            it_lang_rtl = j_dict_infotom['lang_rtl']
+        except KeyError:
+            it_lang_rtl=False
+
+        try:
+            it_left = j_dict_infotom['left']
+        except KeyError:
+            it_left = 0
+
+        try:
+            it_top = j_dict_infotom['top']
+        except KeyError:
+            it_top = 0
+        try:
+            it_width = j_dict_infotom['width']
+        except KeyError:
+            it_width = 0
+
+        try:
+            it_height = j_dict_infotom['height']
+        except KeyError:
+            it_height = 0
+
+        try:
+            it_level = j_dict_infotom['level']
+        except KeyError:
+            it_level = 0
+
+        try:
+            # todo: take care of parent_bond decoding here
+            it_parent_bond = j_dict_infotom['parent_bond']
+        except KeyError:
+            it_parent_bond = None
+
+        it = InfoTom(it_contents, it_lang_rtl
+                     , it_left, it_top, it_width, it_height
+                     , it_level, it_parent_bond)
         return it
 
