@@ -36,6 +36,5 @@ class InfoCompound(InfoTom.InfoTom):
                                            level, parent_bond)
 
     def __str__(self):
-        if self.__contents is None:
-            return ''
-        return str(self.__contents)
+        return super(InfoCompound, self).__str__()
+

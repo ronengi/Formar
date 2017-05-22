@@ -7,19 +7,26 @@ from formar.fdata import InfoTom
 class PageReader:
 
     def __init__(self, path=None):
-        self._path = path
+        self.__path = path
 
     def __str__(self):
-        return str('this page reader is bound to: {0}'.format(self._path))
+        return str('this page reader is bound to: {0}'.format(self.get_path()))
+
+    def get_path(self):
+        try:
+            return str(self.__path)
+        except (AttributeError, TypeError):
+            # no such attribute or None
+            return ''
 
     def get_page_info(self):
-        if '_path' not in vars(self) or self._path is None:
-            return None
+        path = self.get_path()
         try:
-            f_reader = open(self._path, 'r')
+            f_reader = open(path, 'r')
         except FileNotFoundError as err:
             print(err)
             print(err.args)
+            return []
         else:
             page1 = []
             for line in f_reader:

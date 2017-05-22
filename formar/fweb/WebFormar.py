@@ -52,8 +52,6 @@ print('<br> <div style="max-width: 500px; margin: auto; padding: 15px;'
       + 'text-align: center; border: 2px solid red;">'
       + 'Information Nodes</div> <br>')
 
-# todo: add InfoTom width & height
-
 # todo: deal with situations with / without exceptions
 # todo:   - page1_info empty (None)
 # todo:   - invalid InfoTom data
@@ -61,8 +59,8 @@ print('<br> <div style="max-width: 500px; margin: auto; padding: 15px;'
 
 # todo: next stage is to save json correctly: page containing InfoToms,
 # todo:  instead of separate InfoToms
-# page1 = PageReader.PageReader('/archive/devel/stimpy/Formar/formar/fdatabase/ffiles/page1')
-page1 = PageReader.PageReader('/archive/devel/stimpy/Formar/formar/fdatabase/ffiles/page1')
+
+page1 = PageReader.PageReader('../../FormarDB/page1')
 page1_info = page1.get_page_info()
 for it in page1_info:
     print(WebInfoTom.WebInfoTom(infotom=it))
