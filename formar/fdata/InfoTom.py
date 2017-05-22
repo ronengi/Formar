@@ -21,16 +21,15 @@ class InfoTom:
     """Information Atom. Represents a basic unit of information.
     """
 
-    def __init__(self, contents=None, lang_rtl=False,
-                 left=0, top=0, width=0, height=0,
-                 level=0, parent_bond=None):
+    def __init__(self, it_id=0, contents=None, lang_rtl=False,
+                 left=0, top=0, width=0, height=0, parent_bond=None):
+        self.__it_id = it_id
         self.__contents = contents
         self.__lang_rtl = lang_rtl
         self.__left = left
         self.__top = top
         self.__width = width
         self.__height = height
-        self.__level = level
         self.__parent_bond = parent_bond
 
     def __str__(self):
@@ -49,10 +48,16 @@ class InfoTom:
             and self.get_top() == other.get_top() \
             and self.get_width() == other.get_width() \
             and self.get_height() == other.get_height() \
-            and self.get_level() == other.get_level() \
             and self.get_parent_bond() == other.get_parent_bond():
             return True
         return False
+
+    def get_it_id(self):
+        try:
+            return int(self.__it_id)
+        except (AttributeError, TypeError):
+            # no such attribute or None
+            return 0
 
     # todo: __contents may be any kind of object
     def get_contents(self):
@@ -97,13 +102,6 @@ class InfoTom:
             # no such attribute or None
             return 0
 
-    def get_level(self):
-        try:
-            return int(self.__level)
-        except (AttributeError, TypeError):
-            # no such attribute or None
-            return 0
-
     # todo: return self.__parent_bond.encode()
     # todo: implement parent_bond with encode() method !
     def get_parent_bond(self):
@@ -115,13 +113,13 @@ class InfoTom:
 
     def encode(self):
         return dict(__InfoTom__=dict(
-            contents=self.get_contents()
+            it_id=self.get_it_id()
+            , contents=self.get_contents()
             , lang_rtl=self.get_lang_rtl()
             , left=self.get_left()
             , top=self.get_top()
             , width=self.get_width()
             , height=self.get_height()
-            , level=self.get_level()
             , parent_bond=self.get_parent_bond()))
 
     @staticmethod
@@ -131,6 +129,11 @@ class InfoTom:
             j_dict_infotom = j_dict['__InfoTom__']
         except KeyError:
             return None
+
+        try:
+            it_it_id = j_dict_infotom['it_id']
+        except KeyError:
+            it_it_id = 0
 
         try:
             it_contents = j_dict_infotom['contents']
@@ -151,6 +154,7 @@ class InfoTom:
             it_top = j_dict_infotom['top']
         except KeyError:
             it_top = 0
+
         try:
             it_width = j_dict_infotom['width']
         except KeyError:
@@ -162,19 +166,14 @@ class InfoTom:
             it_height = 0
 
         try:
-            it_level = j_dict_infotom['level']
-        except KeyError:
-            it_level = 0
-
-        try:
             # todo: take care of parent_bond decoding here
             it_parent_bond = j_dict_infotom['parent_bond']
         except KeyError:
             it_parent_bond = None
 
-        it = InfoTom(contents=it_contents, lang_rtl=it_lang_rtl
+        it = InfoTom(it_id=it_it_id, contents=it_contents, lang_rtl=it_lang_rtl
                      , left=it_left, top=it_top
                      , width=it_width, height=it_height
-                     , level=it_level, parent_bond=it_parent_bond)
+                     , parent_bond=it_parent_bond)
         return it
 

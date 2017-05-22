@@ -28,12 +28,11 @@ class InfoCompound(InfoTom.InfoTom):
     information units which link to it, and it has more display options.
     """
 
-    def __init__(self, contents=None, lang_rtl=False,
-                 left=0, top=0, width=0, height=0,
-                 level=0, parent_bond=None):
-        super(InfoCompound, self).__init__(contents, lang_rtl,
+    def __init__(self, it_id=0, contents=None, lang_rtl=False,
+                 left=0, top=0, width=0, height=0, parent_bond=None):
+        super(InfoCompound, self).__init__(it_id, contents, lang_rtl,
                                            left, top, width, height,
-                                           level, parent_bond)
+                                           parent_bond)
 
 #    def __str__(self):
 #        return super(InfoCompound, self).__str__()
