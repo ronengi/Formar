@@ -35,6 +35,6 @@ class InfoCompound(InfoTom.InfoTom):
                                            left, top, width, height,
                                            level, parent_bond)
 
-    def __str__(self):
-        return super(InfoCompound, self).__str__()
+#    def __str__(self):
+#        return super(InfoCompound, self).__str__()
 
