@@ -102,9 +102,8 @@ class InfoTom:
             # no such attribute or None
             return 0
 
-    # todo: return self.__parent_bond.encode()
-    # todo: implement parent_bond with encode() method !
     def get_parent_bond(self):
+        """return a Bond b_id which links to main parent"""
         try:
             return self.__parent_bond
         except (AttributeError, TypeError):
@@ -166,7 +165,6 @@ class InfoTom:
             it_height = 0
 
         try:
-            # todo: take care of parent_bond decoding here
             it_parent_bond = j_dict_infotom['parent_bond']
         except KeyError:
             it_parent_bond = None
