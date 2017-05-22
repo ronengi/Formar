@@ -111,7 +111,10 @@ class InfoTom:
             return None
 
     def encode(self):
-        return dict(__InfoTom__=dict(
+        return dict(__InfoTom__=self.encode_infotom_fields())
+
+    def encode_infotom_fields(self):
+        return dict(
             it_id=self.get_it_id()
             , contents=self.get_contents()
             , lang_rtl=self.get_lang_rtl()
@@ -119,16 +122,18 @@ class InfoTom:
             , top=self.get_top()
             , width=self.get_width()
             , height=self.get_height()
-            , parent_bond=self.get_parent_bond()))
+            , parent_bond=self.get_parent_bond())
 
     @staticmethod
     def decode(j_dict):
-
         try:
             j_dict_infotom = j_dict['__InfoTom__']
+            return InfoTom.decode_infotom_fields(j_dict_infotom)
         except KeyError:
             return None
 
+    @staticmethod
+    def decode_infotom_fields(j_dict_infotom):
         try:
             it_it_id = j_dict_infotom['it_id']
         except KeyError:

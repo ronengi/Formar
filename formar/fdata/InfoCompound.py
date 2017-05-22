@@ -16,10 +16,10 @@
    limitations under the License.
 """
 
-from formar.fdata import InfoTom
+from formar.fdata.InfoTom import InfoTom
 
 
-class InfoCompound(InfoTom.InfoTom):
+class InfoCompound(InfoTom):
     """A higher information unit.
     
     This is a unit of information in itself, which contains other atoms
@@ -37,3 +37,13 @@ class InfoCompound(InfoTom.InfoTom):
 #    def __str__(self):
 #        return super(InfoCompound, self).__str__()
 
+    def encode(self):
+        return dict(__InfoCompound__=self.encode_infotom_fields())
+
+    @staticmethod
+    def decode(j_dict):
+        try:
+            j_dict_infocompound = j_dict['__InfoCompound__']
+            return InfoTom.decode_infotom_fields(j_dict_infocompound)
+        except KeyError:
+            return None
