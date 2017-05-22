@@ -83,19 +83,25 @@ class Bond:
             return ''
 
     def encode(self):
-        return dict(__Bond__=dict(
-            b_id=self.get_b_id(),
-            infotom1=self.get_infotom1(),
-            infotom2=self.get_infotom2(),
-            description=self.get_description()))
+        return dict(__Bond__=self.encode_bond_fields())
+
+    def encode_bond_fields(self):
+            return dict(
+                b_id=self.get_b_id(),
+                infotom1=self.get_infotom1(),
+                infotom2=self.get_infotom2(),
+                description=self.get_description())
 
     @staticmethod
     def decode(j_dict):
         try:
             j_dict_bond = j_dict['__Bond__']
+            return Bond.decode_bond_fields(j_dict_bond)
         except KeyError:
             return None
 
+    @staticmethod
+    def decode_bond_fields(j_dict_bond):
         try:
             b_b_id = j_dict_bond['b_id']
         except KeyError:
