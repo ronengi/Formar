@@ -124,16 +124,16 @@ class InfoTom:
             , height=self.get_height()
             , parent_bond=self.get_parent_bond())
 
-    @staticmethod
-    def decode(j_dict):
+    @classmethod
+    def decode(cls, j_dict):
         try:
             j_dict_infotom = j_dict['__InfoTom__']
-            return InfoTom.decode_infotom_fields(j_dict_infotom)
+            return cls.decode_infotom_fields(j_dict_infotom)
         except KeyError:
             return None
 
-    @staticmethod
-    def decode_infotom_fields(j_dict_infotom):
+    @classmethod
+    def decode_infotom_fields(cls, j_dict_infotom):
         try:
             it_it_id = j_dict_infotom['it_id']
         except KeyError:
@@ -174,9 +174,9 @@ class InfoTom:
         except KeyError:
             it_parent_bond = None
 
-        it = InfoTom(it_id=it_it_id, contents=it_contents, lang_rtl=it_lang_rtl
-                     , left=it_left, top=it_top
-                     , width=it_width, height=it_height
-                     , parent_bond=it_parent_bond)
+        it = cls(it_id=it_it_id, contents=it_contents, lang_rtl=it_lang_rtl
+                 , left=it_left, top=it_top
+                 , width=it_width, height=it_height
+                 , parent_bond=it_parent_bond)
         return it
 

@@ -92,16 +92,16 @@ class Bond:
                 infotom2=self.get_infotom2(),
                 description=self.get_description())
 
-    @staticmethod
-    def decode(j_dict):
+    @classmethod
+    def decode(cls, j_dict):
         try:
             j_dict_bond = j_dict['__Bond__']
-            return Bond.decode_bond_fields(j_dict_bond)
+            return cls.decode_bond_fields(j_dict_bond)
         except KeyError:
             return None
 
-    @staticmethod
-    def decode_bond_fields(j_dict_bond):
+    @classmethod
+    def decode_bond_fields(cls, j_dict_bond):
         try:
             b_b_id = j_dict_bond['b_id']
         except KeyError:
@@ -122,7 +122,7 @@ class Bond:
         except KeyError:
             b_description = ''
 
-        b = Bond(b_id=b_b_id, infotom1=b_infotom1, infotom2=b_infotom2
-                 , description=b_description)
+        b = cls(b_id=b_b_id, infotom1=b_infotom1, infotom2=b_infotom2
+                , description=b_description)
         return b
 

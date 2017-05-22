@@ -40,10 +40,10 @@ class InfoCompound(InfoTom):
     def encode(self):
         return dict(__InfoCompound__=self.encode_infotom_fields())
 
-    @staticmethod
-    def decode(j_dict):
+    @classmethod
+    def decode(cls, j_dict):
         try:
             j_dict_infocompound = j_dict['__InfoCompound__']
-            return InfoTom.decode_infotom_fields(j_dict_infocompound)
+            return cls.decode_infotom_fields(j_dict_infocompound)
         except KeyError:
             return None
