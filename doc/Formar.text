@@ -1,8 +1,30 @@
 
-bond types:
-    information to information
-    information to key_word
-    information to display
+###############################################################################
+ Copyright 2017 Ronen Gilead-Raz
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+###############################################################################
+
+
+Bond types:
+        # every object is an information
+        # every Bond is a Bond
+    TitleBond:      info2(InfoTom, InfoCompound, ...) is title of info1
+    Bond:           info2(InfoTom, InfoCompound, ...) is plain text in info1
+    ParagraphBond:  info2(InfoTom, InfoCompound, ...) is paragraph in info1
+    ExampleBond:    info2(InfoTom, InfoCompound, ...) is an example in info1
+    KeyWordBond:    info2(InfoKeyWord) is a keyword of info1
+    DisplayBond:    info2(InfoDisplay) is the display properties of info1
 
 
 information types:
