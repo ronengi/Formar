@@ -26,13 +26,16 @@
 
 # todo: gradually transfer functionality to specialized modules
 
-from formar.fweb import PageHeader
-from formar.fweb import PageFooter
-from formar.fweb import WebInfoTom
-from formar.fdata import InfoTom
-from formar.fdatabase.ffiles import PageReader
+from formar.fweb.PageHeader import PageHeader
+from formar.fweb.PageFooter import PageFooter
+from formar.fdatabase.ffiles.PageReader import PageReader
+from formar.fweb.WebInfoTom import WebInfoTom
+from formar.fdata.InfoTom import InfoTom
+from formar.fdata.InfoCompound import InfoCompound
+from formar.fdata.Bond import Bond
 
-header = PageHeader.PageHeader()
+
+header = PageHeader()
 header._title = 'Formar Objects Skeleton'
 header.add_meta('charset="UTF-8"')
 header.add_meta('name="viewport" content="width=device-width, initial-scale=1.0"')
@@ -52,21 +55,18 @@ print('<br> <div style="max-width: 500px; margin: auto; padding: 15px;'
       + 'text-align: center; border: 2px solid red;">'
       + 'Information Nodes</div> <br>')
 
-# todo: deal with situations with / without exceptions
-# todo:   - page1_info empty (None)
-# todo:   - invalid InfoTom data
-# todo:   - InfoTom None
-
-# todo: next stage is to save json correctly: page containing InfoToms,
-# todo:  instead of separate InfoToms
-
-page1 = PageReader.PageReader('../../FormarDB/page1')
-page1_info = page1.get_page_info()
-for it in page1_info:
-    print(WebInfoTom.WebInfoTom(infotom=it))
+page_data = PageReader.get_page_data('../../FormarDB/page1')
+for it in page_data:
+    print('[', it.__class__.__name__, ']', end='<br>\n')
+    if isinstance(it, InfoCompound):
+        print(WebInfoTom(infotom=it))
+    elif isinstance(it, InfoTom):
+        print(WebInfoTom(infotom=it))
+    elif isinstance(it, Bond):
+        pass
 
 print("<br>")
 
-footer = PageFooter.PageFooter()
+footer = PageFooter()
 print(footer)
 

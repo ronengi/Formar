@@ -1,8 +1,11 @@
-{"__InfoTom__": {"id": 1, "contents": "vim", "lang_rtl": false, "left": 100, "top": 80, "width": 100, "height": 20, "parent_bond": null}}
-{"__InfoTom__": {"id": 2, "contents": "Configuration", "lang_rtl": false, "left": 200, "top": 140, "width": 200, "height": 20, "parent_bond": null}}
-{"__InfoTom__": {"id": 3, "contents": "Files", "lang_rtl": false, "left": 400, "top": 200, "width": 100, "height": 20, "parent_bond": null}}
-{"__InfoTom__": {"id": 4, "contents": "~/.vimrc", "lang_rtl": false, "left": 500, "top": 270, "width": 100, "height": 20, "parent_bond": null}}
-{"__InfoTom__": {"id": 5, "contents": "/etc/vimrc", "lang_rtl": false, "left": 500, "top": 350, "width": 100, "height": 20, "parent_bond": null}}
-{"__InfoTom__": {"id": 6, "contents": "/var/abs/extra/vim/vimrc", "lang_rtl": false, "left": 500, "top": 430, "width": 300, "height": 20, "parent_bond": null}}
-{"__InfoTom__": {"id": 7, "contents": "/usr/share/vim/vim80/vimrc_example.vim", "lang_rtl": false, "left": 500, "top": 500, "width": 350, "height": 20, "parent_bond": null}}
-{}
+[
+  {"__InfoTom__": {"it_id": 2, "contents": "Configuration", "lang_rtl": false, "left": 200, "top": 140, "width": 200, "height": 20, "parent_bond": null}},
+  {"__InfoTom__": {"it_id": 3, "contents": "Files", "lang_rtl": false, "left": 400, "top": 200, "width": 100, "height": 20, "parent_bond": null}},
+  {"__InfoTom__": {"it_id": 4, "contents": "~/.vimrc", "lang_rtl": false, "left": 500, "top": 270, "width": 100, "height": 20, "parent_bond": null}},
+  {"__InfoTom__": {"it_id": 5, "contents": "/etc/vimrc", "lang_rtl": false, "left": 500, "top": 350, "width": 100, "height": 20, "parent_bond": null}},
+  {"__InfoTom__": {"it_id": 6, "contents": "/var/abs/extra/vim/vimrc", "lang_rtl": false, "left": 500, "top": 430, "width": 300, "height": 20, "parent_bond": null}},
+  {"__InfoTom__": {"it_id": 7, "contents": "/usr/share/vim/vim80/vimrc_example.vim", "lang_rtl": false, "left": 500, "top": 500, "width": 350, "height": 20, "parent_bond": null}},
+  {"__InfoCompound__": {"it_id": 1, "contents": "vim", "lang_rtl": false, "left": 100, "top": 80, "width": 100, "height": 30, "parent_bond": null}},
+  {"__Bond__": {"b_id": 1, "infotom1": 1, "infotom2": 2, "description": "vim:Configuration"}},
+  {"__Bond__": {"b_id": 2, "infotom2": 2, "infotom2": 3, "description": "Configuration:Files"}}
+]

@@ -1,52 +1,39 @@
 #!/usr/bin/python
 
 import json
-from formar.fdata import InfoTom
+from formar.fdata.InfoTom import InfoTom
+from formar.fdata.InfoCompound import  InfoCompound
+from formar.fdata.Bond import Bond
 
 
 class PageReader:
 
-    def __init__(self, path=None):
-        self.__path = path
-
-    def __str__(self):
-        return str('this page reader is bound to: {0}'.format(self.get_path()))
-
-    def get_path(self):
-        try:
-            return str(self.__path)
-        except (AttributeError, TypeError):
-            # no such attribute or None
-            return ''
-
-    def get_page_info(self):
-        path = self.get_path()
+    @staticmethod
+    def get_page_data(path):
         try:
             f_reader = open(path, 'r')
-        except FileNotFoundError as err:
-            print(err)
-            print(err.args)
+            # todo: implement a more forgiving, flexible file parser
+            return json.load(f_reader, object_hook=PageReader.formar_hooks)
+        except FileNotFoundError:
+            print('Failed to open file "{0}"'.format(path), end='<br>\n')
             return []
-        else:
-            page1 = []
-            for line in f_reader:
-                try:
-                    page1.append(
-                        json.loads(
-                            line, object_hook=PageReader.as_infotom))
-                except json.JSONDecodeError as err:
-                    print(err.args)
-            return page1
-
+        except json.JSONDecodeError as err:
+            print('Malformed data file "{0}"'.format(path), end='<br>\n')
+            print('Error details: "{0}"'.format(err), end='<br>\n')
+            return []
         finally:
             try:
                 f_reader.close()
-            except NameError as err:
-                print(err)
-                print(err.args)
+            except NameError:
+                print('Failed to close file "{0}"'.format(path), end='<br>\n')
 
     @staticmethod
-    def as_infotom(j_dict):
+    def formar_hooks(j_dict):
         if '__InfoTom__' in j_dict:
-            return InfoTom.InfoTom.decode(j_dict)
+            return InfoTom.decode(j_dict)
+        elif '__InfoCompound__' in j_dict:
+            return InfoCompound.decode(j_dict)
+        elif '__Bond__' in j_dict:
+            return Bond.decode(j_dict)
         return j_dict
+
