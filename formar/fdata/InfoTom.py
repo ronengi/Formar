@@ -172,8 +172,9 @@ class InfoTom:
         except KeyError:
             it_parent_bond = None
 
-        it = InfoTom(it_contents, it_lang_rtl
-                     , it_left, it_top, it_width, it_height
-                     , it_level, it_parent_bond)
+        it = InfoTom(contents=it_contents, lang_rtl=it_lang_rtl
+                     , left=it_left, top=it_top
+                     , width=it_width, height=it_height
+                     , level=it_level, parent_bond=it_parent_bond)
         return it
 
