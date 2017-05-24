@@ -37,7 +37,8 @@ class WebInfoTom:
         if not isinstance(it, InfoTom.InfoTom):
             raise TypeError('InfoTom expected')
 
-        html_div = {'classes': []
+        html_div = {'it_id': self.__infotom.get_it_id()
+                    , 'classes': []
                     , 'styles': []
                     , 'properties': []
                     , 'contents': []}
@@ -54,10 +55,11 @@ class WebInfoTom:
             html_div['classes'].append('InfoTom')
             html_div['properties'].append('draggable="true"')
             html_div['contents'].append(str(it))
-            html_div['contents'].append(self.add_resize_handle())
+            html_div['contents'].append(WebInfoTom.add_resize_handle(it_id=html_div['it_id']))
 
-        div = '<div class="{0}" style="{1}" {2}>{3}</div>'.format(
-            ' '.join(html_div['classes'])
+        div = '<div id="{0}" class="{1}" style="{2}" {3}>{4}</div>'.format(
+            html_div['it_id']
+            , ' '.join(html_div['classes'])
             , ' '.join(html_div['styles'])
             , ' '.join(html_div['properties'])
             , '\n'.join(html_div['contents']))
@@ -65,6 +67,6 @@ class WebInfoTom:
         return div
 
     @staticmethod
-    def add_resize_handle():
-        handle = '<div class="resizeHandle"  style="right: 1px; bottom: 1px;"  draggable="true">  &Congruent;  </div>'
+    def add_resize_handle(it_id=''):
+        handle = '<div id="rh{0}" class="resizeHandle" style="right: 1px; bottom: 1px; height:12px; width: 8px;"  draggable="true"> &square; </div>'.format(it_id)
         return handle

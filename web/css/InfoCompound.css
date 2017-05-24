@@ -14,30 +14,22 @@
    limitations under the License.
 */
 
-div.InfoTom {
+div.InfoCompound {
     position: absolute;
     border: 1px outset white;
-    border-radius: 3px;
+    border-radius: 2px;
     padding-left: 5px;
     padding-top: 3px;
     background-color: whitesmoke;
     font-size: 12px;
     font-family: "Arial";
-    font-style: normal;
+    font-style: italic;
     white-space: nowrap;
+
     cursor: crosshair;
 }
 
-
-div.resizeHandle {
-    position: absolute;
-    border: 1px solid blue;
-    border-radius: 3px;
-    padding: 0px 1px;
-    background-color: lightgray;
-}
-
-/* New editable InfoTom */
+/* New editable InfoCompound */
 div.addnewone {
     background-color: lightblue;
     transition: background-color 1s ease-in-out;

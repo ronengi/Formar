@@ -34,7 +34,10 @@ function re_position_rtl_resizeHandles() {
 }
 
 window.onload = function () {
-    drag_and_drop_init();
+    infotom = new InfoTom();                // global, undeclared
+    infocompound = new InfoCompound();      //
+    resizehandle = new ResizeHandle();      //
+    listener = new DragAndDropListener();   //
     re_position_rtl_resizeHandles();
     document.getElementById("alerter").innerHTML = "ready";
 };

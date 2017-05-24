@@ -14,14 +14,15 @@
    limitations under the License.
 */
 
-body {
-    position: relative;
-    min-height: 100%;
-    top: 0px;
-    margin: 0;
+div.resizeHandle {
+    position: absolute;
+    border: 0px solid white;
+    border-radius: 1px;
+    padding: 0px;
+    background-color: white;
+    cursor: se-resize;
 }
 
-
-.lang_rtl {
-    direction:rtl;
+div.resizeHandle.rtl {
+    cursor: sw-resize;
 }
