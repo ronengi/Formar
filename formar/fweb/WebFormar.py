@@ -64,11 +64,12 @@ page_data = PageReader.get_page_data('../../FormarDB/page1')
 for it in page_data:
     # print('[', it.__class__.__name__, ']', end='<br>\n')
     if isinstance(it, InfoCompound):
-        print(WebInfoTom(infotom=it))
+        print("InfoCompound")
+        # print(WebInfoCompound(obj=it))
     elif isinstance(it, InfoTom):
-        print(WebInfoTom(infotom=it))
+        print(WebInfoTom.generate_html(obj=it))
     elif isinstance(it, Bond):
-        pass
+        print("Bond")
 
 print("<br>")
 

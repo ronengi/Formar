@@ -17,56 +17,55 @@
 """
 
 
-from formar.fdata import InfoTom
+from WebTagGenerator import WebTagGenerator
 
+from formar.fdata.InfoTom import InfoTom
 
-# todo: implement a separate <div> creator
-# todo: after that implement a general <tag> creator
 class WebInfoTom:
-    """Draws InfoTom on a web page.
-    """
+    """Draws InfoTom on a web page."""
 
-    def __init__(self, infotom=None):
-        self.__infotom = infotom
+    def __init__(self):
+        pass
 
     def __str__(self):
-        it = self.__infotom
-        if it is None:
-            return ''
+        pass
 
-        if not isinstance(it, InfoTom.InfoTom):
-            raise TypeError('InfoTom expected')
+    @classmethod
+    def generate_html(cls, obj=None):
+        cls.validate(obj=obj)
+        tag_info = cls.generate_tag_info(obj=obj)
+        return tag_info  # return WebTahGenerator...
 
-        html_div = {'it_id': self.__infotom.get_it_id()
-                    , 'classes': []
-                    , 'styles': []
-                    , 'properties': []
-                    , 'contents': []}
-
-        if it.get_lang_rtl():
-            html_div['classes'].append('lang_rtl')
-
-        html_div['styles'].append('left: {0}px;'.format(str(it.get_left())))
-        html_div['styles'].append('top: {0}px;'.format(str(it.get_top())))
-        html_div['styles'].append('width: {0}px;'.format(str(it.get_width())))
-        html_div['styles'].append('height: {0}px;'.format(str(it.get_height())))
-
-        if isinstance(it, InfoTom.InfoTom):
-            html_div['classes'].append('InfoTom')
-            html_div['properties'].append('draggable="true"')
-            html_div['contents'].append(str(it))
-            html_div['contents'].append(WebInfoTom.add_resize_handle(it_id=html_div['it_id']))
-
-        div = '<div id="{0}" class="{1}" style="{2}" {3}>{4}</div>'.format(
-            html_div['it_id']
-            , ' '.join(html_div['classes'])
-            , ' '.join(html_div['styles'])
-            , ' '.join(html_div['properties'])
-            , '\n'.join(html_div['contents']))
-
-        return div
+    @classmethod
+    def generate_tag_info(cls, obj=None):
+        cls.validate(obj=obj)
+        tag = dict()
+        tag['t_id'] = obj.get_it_id()
+        tag['t_classes'] = ['InfoTom']
+        if obj.get_lang_rtl():
+            tag['t_classes'].append('lang_rtl')
+        tag['t_styles'] = []
+        tag['t_styles'].append('left: {0}px;'.format(str(obj.get_left())))
+        tag['t_styles'].append('top: {0}px;'.format(str(obj.get_top())))
+        tag['t_styles'].append('width: {0}px;'.format(str(obj.get_width())))
+        tag['t_styles'].append('height: {0}px;'.format(str(obj.get_height())))
+        tag['t_properties'] = {'draggable': 'true'} # don't forget to convert to "true"
+        tag['t_contents'] = [obj.get_contents()]
+        tag['t_contents'].append(WebInfoTom.add_resize_handle(it_id='it_id_{0}'.format(obj.get_it_id())))
+        return dict(div=tag)
 
     @staticmethod
     def add_resize_handle(it_id=''):
-        handle = '<div id="rh{0}" class="resizeHandle" style="right: 1px; bottom: 1px; height:12px; width: 8px;"  draggable="true"> &square; </div>'.format(it_id)
-        return handle
+        tag = dict()
+        tag['t_id'] = 'rh_{0}'.format(it_id)
+        tag['t_classes'] = ['resizeHandle']
+        tag['t_styles'] = dict(right='1px', bottom='1px', height='12px', width='8px')
+        tag['t_properties'] = {'draggable': 'true'} # don't forget to convert to "true"
+        tag['t_contents'] = [' &square; ']
+        return dict(div=tag)
+
+    @staticmethod
+    def validate(obj=None):
+        if not isinstance(obj, InfoTom):
+            raise TypeError('InfoTom expected')
+
