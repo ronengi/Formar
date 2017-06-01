@@ -90,6 +90,7 @@ class Bond:
                 b_id=self.get_b_id(),
                 infotom1=self.get_infotom1(),
                 infotom2=self.get_infotom2(),
+                level=self.get_level(),
                 description=self.get_description())
 
     @classmethod
@@ -118,11 +119,15 @@ class Bond:
             b_infotom2 = None
 
         try:
+            b_level = j_dict_bond['level']
+        except KeyError:
+            b_level = 0
+        try:
             b_description = j_dict_bond['description']
         except KeyError:
             b_description = ''
 
         b = cls(b_id=b_b_id, infotom1=b_infotom1, infotom2=b_infotom2
-                , description=b_description)
+                , level=b_level, description=b_description)
         return b
 
