@@ -17,9 +17,9 @@
 """
 
 
-from WebTagGenerator import WebTagGenerator
-
+from HTMLTag import HTMLTag
 from formar.fdata.InfoTom import InfoTom
+
 
 class WebInfoTom:
     """Draws InfoTom on a web page."""
@@ -31,25 +31,30 @@ class WebInfoTom:
         pass
 
     @classmethod
+    def get_t_class(cls):
+        return 'InfoTom'
+
+    @classmethod
     def generate_html(cls, obj=None):
         cls.validate(obj=obj)
         tag_info = cls.generate_tag_info(obj=obj)
-        return tag_info  # return WebTahGenerator...
+        # return tag_info
+        return HTMLTag.generate(tag_info)
 
     @classmethod
     def generate_tag_info(cls, obj=None):
         cls.validate(obj=obj)
         tag = dict()
         tag['t_id'] = obj.get_it_id()
-        tag['t_classes'] = ['InfoTom']
+        tag['t_classes'] = ['{0}'.format(cls.get_t_class())]
         if obj.get_lang_rtl():
             tag['t_classes'].append('lang_rtl')
-        tag['t_styles'] = []
-        tag['t_styles'].append('left: {0}px;'.format(str(obj.get_left())))
-        tag['t_styles'].append('top: {0}px;'.format(str(obj.get_top())))
-        tag['t_styles'].append('width: {0}px;'.format(str(obj.get_width())))
-        tag['t_styles'].append('height: {0}px;'.format(str(obj.get_height())))
-        tag['t_properties'] = {'draggable': 'true'} # don't forget to convert to "true"
+        tag['t_styles'] = dict()
+        tag['t_styles']['left'] = '{0}px'.format(str(obj.get_left()))
+        tag['t_styles']['top'] = '{0}px'.format(str(obj.get_top()))
+        tag['t_styles']['width'] = '{0}px'.format(str(obj.get_width()))
+        tag['t_styles']['height'] = '{0}px'.format(str(obj.get_height()))
+        tag['t_properties'] = {'draggable': 'true'}
         tag['t_contents'] = [obj.get_contents()]
         tag['t_contents'].append(WebInfoTom.add_resize_handle(it_id='it_id_{0}'.format(obj.get_it_id())))
         return dict(div=tag)

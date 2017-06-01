@@ -5,19 +5,15 @@
 import cgitb
 cgitb.enable()
 
-"""
 from os import path
 import sys
-sys.path.append(path.abspath('../WebTagGenerator'))
-"""
-from os import path
-import sys
-sys.path.append(path.abspath('../WebTagGenerator/'))
+sys.path.append(path.abspath('../HTMLTag/'))
 
 
 print("Content-Type: text/html;charset=utf-8")
 print()
 
-print(sys.path)
+# print(sys.path)
+
 import formar.fweb.WebFormar
 

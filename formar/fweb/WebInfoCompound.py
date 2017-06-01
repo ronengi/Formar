@@ -21,14 +21,15 @@ from formar.fweb.WebInfoTom import WebInfoTom
 from formar.fdata.InfoCompound import InfoCompound
 
 
-# todo: implement a separate <div> creator
-# todo: after that implement a general <tag> creator
 class WebInfoCompound(WebInfoTom):
     """Draws InfoCompound on a web page."""
 
-    def __init__(self, infocompound=None):
-        super(WebInfoCompound, self)
+    def __init__(self):
+        super(WebInfoCompound, self).__init__()
 
     def __str__(self):
-        pass
+        super(WebInfoCompound, self).__str__()
 
+    @classmethod
+    def get_t_class(cls):
+        return 'InfoCompound'

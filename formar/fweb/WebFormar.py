@@ -29,10 +29,11 @@
 from formar.fweb.PageHeader import PageHeader
 from formar.fweb.PageFooter import PageFooter
 from formar.fdatabase.ffiles.PageReader import PageReader
-from formar.fweb.WebInfoTom import WebInfoTom
 from formar.fdata.InfoTom import InfoTom
 from formar.fdata.InfoCompound import InfoCompound
 from formar.fdata.Bond import Bond
+from formar.fweb.WebInfoTom import WebInfoTom
+from formar.fweb.WebInfoCompound import WebInfoCompound
 
 
 header = PageHeader()
@@ -62,10 +63,9 @@ print('<br> <div style="max-width: 500px; margin: auto; padding: 15px;'
 
 page_data = PageReader.get_page_data('../../FormarDB/page1')
 for it in page_data:
-    # print('[', it.__class__.__name__, ']', end='<br>\n')
+    print('[', it.get_it_id(), it.__class__.__name__, ']', end='<br>\n')
     if isinstance(it, InfoCompound):
-        print("InfoCompound")
-        # print(WebInfoCompound(obj=it))
+        print(WebInfoCompound.generate_html(obj=it))
     elif isinstance(it, InfoTom):
         print(WebInfoTom.generate_html(obj=it))
     elif isinstance(it, Bond):
