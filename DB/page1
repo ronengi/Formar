@@ -1,6 +1,6 @@
 [
-  {"__InfoTom__": {"it_id": 2, "contents": "Configuration", "lang_rtl": false, "left": 200, "top": 140, "width": 200, "height": 20, "parent_bond": null}},
-  {"__InfoTom__": {"it_id": 3, "contents": "Files", "lang_rtl": true, "left": 400, "top": 200, "width": 100, "height": 20, "parent_bond": null}},
+  {"__InfoCompound__": {"it_id": 2, "contents": "Configuration", "lang_rtl": false, "left": 200, "top": 140, "width": 200, "height": 20, "parent_bond": null}},
+  {"__InfoCompound__": {"it_id": 3, "contents": "Files", "lang_rtl": true, "left": 400, "top": 200, "width": 100, "height": 20, "parent_bond": null}},
   {"__InfoTom__": {"it_id": 4, "contents": "~/.vimrc", "lang_rtl": false, "left": 500, "top": 270, "width": 100, "height": 20, "parent_bond": null}},
   {"__InfoTom__": {"it_id": 5, "contents": "/etc/vimrc", "lang_rtl": false, "left": 500, "top": 350, "width": 100, "height": 20, "parent_bond": null}},
   {"__InfoTom__": {"it_id": 6, "contents": "/var/abs/extra/vim/vimrc", "lang_rtl": false, "left": 500, "top": 430, "width": 300, "height": 20, "parent_bond": null}},
