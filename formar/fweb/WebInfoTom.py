@@ -30,19 +30,31 @@ class WebInfoTom:
     def __str__(self):
         pass
 
+    @staticmethod
+    def validate(obj=None):
+        if not isinstance(obj, InfoTom):
+            raise TypeError('InfoTom expected')
+
     @classmethod
     def get_t_class(cls):
         return 'InfoTom'
 
     @classmethod
-    def generate_html(cls, obj=None):
-        cls.validate(obj=obj)
-        tag_info = cls.generate_tag_info(obj=obj)
-        # return tag_info
-        return HTMLTag.generate(tag_info)
+    def append_contents(cls, root: dict={}, contents: dict={}):
+        root['div']['t_contents'].append(contents)
+
+    @staticmethod
+    def add_resize_handle(it_id='') -> dict:
+        tag = dict()
+        tag['t_id'] = 'rh_{0}'.format(it_id)
+        tag['t_classes'] = ['resizeHandle']
+        tag['t_styles'] = dict(right='1px', bottom='1px', height='12px', width='8px')
+        tag['t_properties'] = {'draggable': 'true'}
+        tag['t_contents'] = [' &square; ']
+        return dict(div=tag)
 
     @classmethod
-    def generate_tag_info(cls, obj=None):
+    def generate_tag_info(cls, obj=None) -> dict:
         cls.validate(obj=obj)
         tag = dict()
         tag['t_id'] = obj.get_it_id()
@@ -59,18 +71,9 @@ class WebInfoTom:
         tag['t_contents'].append(WebInfoTom.add_resize_handle(it_id='it_id_{0}'.format(obj.get_it_id())))
         return dict(div=tag)
 
-    @staticmethod
-    def add_resize_handle(it_id=''):
-        tag = dict()
-        tag['t_id'] = 'rh_{0}'.format(it_id)
-        tag['t_classes'] = ['resizeHandle']
-        tag['t_styles'] = dict(right='1px', bottom='1px', height='12px', width='8px')
-        tag['t_properties'] = {'draggable': 'true'} # don't forget to convert to "true"
-        tag['t_contents'] = [' &square; ']
-        return dict(div=tag)
-
-    @staticmethod
-    def validate(obj=None):
-        if not isinstance(obj, InfoTom):
-            raise TypeError('InfoTom expected')
-
+    @classmethod
+    def generate_html(cls, obj=None) -> str:
+        cls.validate(obj=obj)
+        tag_info = cls.generate_tag_info(obj=obj)
+        # return tag_info
+        return HTMLTag.generate(tag_info)
