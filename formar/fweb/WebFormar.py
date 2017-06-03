@@ -34,7 +34,22 @@ from formar.fdata.InfoCompound import InfoCompound
 from formar.fdata.Bond import Bond
 from formar.fweb.WebInfoTom import WebInfoTom
 from formar.fweb.WebInfoCompound import WebInfoCompound
+from HTMLTag import HTMLTag
 
+def find_item(root_obj=None, id=''):
+    if root_obj.__class__.__name__ == 'list':
+        for item in root_obj:
+            found = find_item(item, id)
+            if found != None:
+                return found
+    elif root_obj.__class__.__name__ == 'dict':
+        try:
+            found = root_obj['div']['t_id']
+            if found == id:
+                return root_obj
+        except:
+            return None
+    return None
 
 header = PageHeader()
 header._title = 'Formar Objects Skeleton'
@@ -61,18 +76,52 @@ print('<br> <div style="max-width: 500px; margin: auto; padding: 15px;'
       + 'text-align: center; border: 2px solid red;">'
       + 'Information Nodes</div> <br>')
 
-page_data = PageReader.get_page_data('../../FormarDB/page1')
-for it in page_data:
-    print('[', it.get_it_id(), it.__class__.__name__, ']', end='<br>\n')
+page_objects = PageReader.get_page_data('../../FormarDB/page1')
+# it's possible here to apply a filter
+
+# start dict-before-html representation of page
+page_dict = []
+for it in page_objects:
     if isinstance(it, InfoCompound):
-        print(WebInfoCompound.generate_html(obj=it))
+        # print('[{0}: {1}] <br>\n'.format(it.get_it_id(), it.__class__.__name__))
+        # print(WebInfoCompound.generate_html(obj=it))
+        page_dict.append(WebInfoCompound.generate_tag_info(obj=it))
     elif isinstance(it, InfoTom):
-        print(WebInfoTom.generate_html(obj=it))
+        # print('[{0}: {1}] <br>\n'.format(it.get_it_id(), it.__class__.__name__))
+        # print(WebInfoTom.generate_html(obj=it))
+        page_dict.append(WebInfoTom.generate_tag_info(obj=it))
     elif isinstance(it, Bond):
-        print("Bond")
+        # bonds must come after all objects exist in memory
+        # print('[{0}: {1}] <br>\n'.format(it.get_b_id(), it.__class__.__name__))
+        pass
+
+# print('<br>\n')
+# print(page_dict)
+# print('<br>\n')
+
+for it in page_objects:
+    if isinstance(it, Bond):
+        id1 = it.get_infotom1()
+        id2 = it.get_infotom2()
+        root = find_item(page_dict, id1)
+        contents = find_item(page_dict, id2)
+        # print(root)
+        # print('<br>\n')
+        # print(contents)
+        # print('<br>\n')
+        try:
+            WebInfoTom.append_contents(root, contents)
+        except TypeError:
+            pass
+            # print('<br>\n')
+            # print(root['div']['t_contents'])
+            # print('<br>\n')
+        # del ...
+
+for it in page_dict:
+    print(HTMLTag.generate(it))
 
 print("<br>")
 
 footer = PageFooter()
 print(footer)
-
