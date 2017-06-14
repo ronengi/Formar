@@ -34,7 +34,6 @@ from formar.fdata.InfoCompound import InfoCompound
 from formar.fdata.Bond import Bond
 from formar.fweb.WebInfoTom import WebInfoTom
 from formar.fweb.WebInfoCompound import WebInfoCompound
-from HTMLTag import HTMLTag
 
 def find_item(root_obj=None, id=''):
     if root_obj.__class__.__name__ == 'list':

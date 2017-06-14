@@ -28,6 +28,10 @@ class InfoCompound(InfoTom):
     information units which link to it, and it has more display options.
     """
 
+    # todo: add a collection of InfoToms.
+    # todo: provide methods to change this collection.
+    # todo: provide methods to iterate over this collection.
+
     def __init__(self, it_id=0, contents=None, lang_rtl=False,
                  left=0, top=0, width=0, height=0, parent_bond=None):
         super(InfoCompound, self).__init__(it_id, contents, lang_rtl,

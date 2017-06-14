@@ -39,6 +39,9 @@ class WebInfoTom:
     def get_t_class(cls):
         return 'InfoTom'
 
+    # todo: use this in WebInfoCompound.
+    # todo: in there, a method will use InfoCompound methods to iterate over a collection.
+
     @classmethod
     def append_contents(cls, root: dict={}, contents: dict={}):
         root['div']['t_contents'].append(contents)
